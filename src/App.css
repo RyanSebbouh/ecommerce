@@ -1,38 +1,60 @@
+/* src/App.css */
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4; /* Un fond gris très clair pour faire ressortir les cartes */
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+h1 {
+  text-align: center;
+  color: #333;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Le conteneur de la liste (La grille) */
+.liste-produits {
+  display: flex;             /* Active le mode flexible (côte à côte) */
+  flex-wrap: wrap;           /* Permet de passer à la ligne si pas de place */
+  justify-content: center;   /* Centre les éléments au milieu de la page */
+  gap: 20px;                 /* Espace entre les produits */
+  margin-top: 30px;
+}
+
+/* La carte du produit individuel */
+.product {
+  background-color: white;
+  border: 1px solid #ddd;    /* Bordure grise légère */
+  border-radius: 8px;        /* Coins arrondis */
+  padding: 15px;
+  width: 200px;              /* Largeur fixe pour chaque carte */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Petite ombre portée pour l'effet 3D */
+  text-align: center;
+  transition: transform 0.2s; /* Animation douce */
+}
+
+/* Petit effet quand on passe la souris dessus */
+.product:hover {
+  transform: translateY(-5px); /* La carte remonte un peu */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Style de l'image */
+.product img {
+  width: 100%;               /* Prend toute la largeur de la carte */
+  height: 120px;             /* Hauteur fixe pour que tout soit aligné */
+  object-fit: cover;         /* Recadre l'image proprement sans l'écraser */
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.product h3 {
+  margin: 10px 0;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.product p {
+  color: #7f8c8d;
+  font-size: 0.9rem;
 }
