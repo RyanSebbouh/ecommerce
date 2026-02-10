@@ -42,7 +42,7 @@ h1 {
 /* Style de l'image */
 .product img {
   width: 100%;               /* Prend toute la largeur de la carte */
-  height: 120px;             /* Hauteur fixe pour que tout soit aligné */
+  height: 120px;             
   object-fit: cover;         /* Recadre l'image proprement sans l'écraser */
   border-radius: 4px;
   margin-bottom: 10px;
@@ -57,4 +57,220 @@ h1 {
 .product p {
   color: #7f8c8d;
   font-size: 0.9rem;
+}
+/* Le cadre principal du compteur */
+.compteur-container {
+  border: 2px solid #3498db; /* J'ai mis un bleu plus moderne */
+  background-color: white;
+  padding: 20px;
+  margin: 20px auto; /* 'auto' permet de centrer le bloc horizontalement */
+  text-align: center;
+  border-radius: 10px; /* Des coins arrondis, c'est plus joli */
+  max-width: 400px;    /* Pour éviter qu'il prenne toute la largeur */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Le chiffre (h1) */
+.compteur-value {
+  font-size: 50px;
+  margin: 10px 0;
+  color: #2c3e50;
+  font-family: 'Courier New', Courier, monospace; /* Style "digital" */
+}
+
+/* Les boutons */
+/* App.css */
+
+/* App.css */
+
+.btn-action {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.btn-action:hover {
+  background-color: #2980b9;
+}
+
+/* Le message d'alerte */
+.msg-alert {
+  color: #e74c3c; /* Rouge */
+  font-weight: bold;
+  margin-top: 15px;
+  background-color: #fadbd8;
+  padding: 10px;
+  border-radius: 5px;
+}
+/* --- Styles pour le Jeu GuessNumber --- */
+
+.guess-game {
+  border: 2px solid orange;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  text-align: center; /* J'ai ajouté ça pour que ce soit plus joli */
+  background-color: #fffaf0; /* Un petit fond très léger pour faire ressortir l'orange */
+}
+
+.guess-input {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.guess-btn {
+  padding: 8px 15px;
+  cursor: pointer;
+  background-color: orange; /* J'ai ajouté une couleur de fond assortie */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.guess-btn:hover {
+  background-color: darkorange; /* Petit effet au survol */
+}
+
+.guess-message {
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 15px;
+  min-height: 27px; /* Pour éviter que ça saute quand le message apparaît */
+}
+/* --- Styles pour la page Contact --- */
+
+.contact-card {
+  padding: 20px;
+  background-color: #e0f7fa; /* Ton bleu clair */
+  border-radius: 8px;
+  max-width: 400px; /* On limite la largeur pour que ce soit élégant */
+  margin: 20px auto; /* On centre la carte */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-group {
+  margin-bottom: 15px; /* Remplace les <br> pour espacer les champs */
+  text-align: left;    /* Pour aligner les labels à gauche */
+  display: flex;
+  flex-direction: column; /* Met le label au-dessus de l'input */
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit; /* Pour que le textarea ait la même police */
+}
+
+.btn-envoyer {
+  background-color: #00bcd4; /* Un bleu un peu plus foncé */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%; /* Le bouton prend toute la largeur */
+}
+
+.btn-envoyer:hover {
+  background-color: #0097a7; /* Effet au survol */
+}
+/* --- Styles pour le composant Majeur --- */
+
+/* Le cadre rouge autour du composant */
+.majeur-container {
+  border: 1px solid red;
+  padding: 10px;
+  margin: 20px;
+}
+
+/* Le texte quand c'est Majeur (Vert) */
+.majeur-ok {
+  color: green;
+  font-weight: bold;
+}
+
+/* Le texte quand c'est Mineur (Orange) */
+.majeur-ko {
+  color: orange;
+  font-weight: bold;
+}
+/* --- Styles pour la Navigation (Menu) --- */
+
+.navbar {
+  padding: 15px;
+  background-color: #333; /* Gris foncé */
+  color: white;
+  margin-bottom: 20px;
+  text-align: center; /* Pour centrer les liens */
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none; /* Enlève le soulignement moche par défaut */
+  font-weight: bold;
+  margin: 0 15px; /* Espacement entre les liens */
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Petit bonus : change la couleur quand on passe la souris dessus */
+.nav-link:hover {
+  color: #00bcd4; /* Bleu cyan */
+  text-decoration: underline;
+}
+/* --- Styles pour le Magasin --- */
+
+.magasin-card {
+  border: 1px solid #333;
+  padding: 10px;
+  margin: 10px;
+  width: 200px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  display: inline-block; /* Pour qu'ils s'alignent côte à côte si besoin */
+}
+
+/* Style de base pour le texte */
+.statut-magasin {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Les couleurs dynamiques */
+.ouvert {
+  color: green;
+}
+
+.ferme {
+  color: red;
+}
+/* --- Styles pour le composant Majeur --- */
+
+.resultat-majeur {
+  color: green;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.resultat-mineur {
+  color: orange;
+  font-weight: bold;
+  padding: 5px;
 }

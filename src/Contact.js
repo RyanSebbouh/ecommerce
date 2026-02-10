@@ -3,16 +3,32 @@ import React, { Component } from 'react';
 class Contact extends Component {
     render() {
         return (
-            <div style={{ padding: "20px", backgroundColor: "#e0f7fa" }}>
+            // On utilise la classe CSS définie plus haut
+            <div className="contact-card">
                 <h2>Contactez-nous</h2>
+                
                 <form>
-                    <label>Email : </label>
-                    <input type="email" placeholder="votre@email.com" />
-                    <br /><br />
-                    <label>Message : </label>
-                    <textarea placeholder="Votre message..."></textarea>
-                    <br /><br />
-                    <button>Envoyer</button>
+                    {/* Groupe Email */}
+                    <div className="form-group">
+                        <label>Email : </label>
+                        <input 
+                            type="email" 
+                            placeholder="ryansebbouh2@gmail.com" 
+                            className="form-input"
+                        />
+                    </div>
+
+                    {/* Groupe Message */}
+                    <div className="form-group">
+                        <label>Message : </label>
+                        <textarea 
+                            placeholder="Yo c'est moi" 
+                            className="form-input"
+                            rows="4" // Pour donner un peu de hauteur au textarea
+                        ></textarea>
+                    </div>
+
+                    <button className="btn-envoyer">Envoyer</button>
                 </form>
             </div>
         );

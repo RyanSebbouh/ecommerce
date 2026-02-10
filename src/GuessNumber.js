@@ -4,37 +4,35 @@ class GuessNumber extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            // 1. On choisit le nombre aléatoire au lancement (entre 1 et 100)
             nombreMystere: Math.floor(Math.random() * 100) + 1,
-            valeurSaisie: '', // Ce que l'utilisateur tape
-            message: ''       // Le résultat (Plus grand / Plus petit)
+            valeurSaisie: '',
+            message: ''
         };
     }
 
-    // Cette fonction s'active quand l'utilisateur écrit dans le champ
     handleInput = (event) => {
         this.setState({ valeurSaisie: event.target.value });
     }
 
-    // Cette fonction compare le nombre saisi avec le nombre mystère
     verifier = () => {
-        const saisie = parseInt(this.state.valeurSaisie, 10); // On convertit le texte en entier
+        const saisie = parseInt(this.state.valeurSaisie, 10);
         const mystere = this.state.nombreMystere;
 
         if (isNaN(saisie)) {
             this.setState({ message: "Veuillez entrer un nombre valide" });
         } else if (saisie > mystere) {
-            this.setState({ message: "Le nombre est plus petit 👇" });
+            this.setState({ message: "Yo my brother le nombre est plus petit 👇" });
         } else if (saisie < mystere) {
-            this.setState({ message: "Le nombre est plus grand 👆" });
+            this.setState({ message: "Yo my brother le nombre est plus grand 👆" });
         } else {
-            this.setState({ message: "C'est juste ! 🎉 Bravo !" });
+            this.setState({ message: "C'est juste my brother 🎉" });
         }
     }
 
     render() {
         return (
-            <div style={{ border: "2px solid orange", padding: "20px", margin: "20px", borderRadius: "10px" }}>
+            // On utilise la classe CSS définie plus haut
+            <div className="guess-game">
                 <h2>Jeu du Plus ou Moins</h2>
                 <p>Devine le nombre entre 1 et 100</p>
 
@@ -42,17 +40,17 @@ class GuessNumber extends Component {
                 <input 
                     type="number" 
                     value={this.state.valeurSaisie}
-                    onChange={this.handleInput} // C'est l'équivalent React de onInput
+                    onChange={this.handleInput}
                     placeholder="Entrez un nombre"
-                    style={{ padding: "8px", marginRight: "10px" }}
+                    className="guess-input"
                 />
 
-                <button onClick={this.verifier} style={{ padding: "8px 15px", cursor: "pointer" }}>
+                <button onClick={this.verifier} className="guess-btn">
                     Deviner
                 </button>
 
                 {/* Zone de résultat */}
-                <p style={{ fontWeight: "bold", fontSize: "18px", marginTop: "15px" }}>
+                <p className="guess-message">
                     {this.state.message}
                 </p>
             </div>

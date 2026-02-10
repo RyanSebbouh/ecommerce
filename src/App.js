@@ -2,19 +2,19 @@ import React, { Component } from 'react';
 import './App.css';
 import Accueil from './Accueil';
 import Contact from './Contact';
+import Majeur from './Majeur';
+// import CompteurDePersonne from './CompteurDePersonne'; 
 
 class App extends Component {
     constructor(props) {
         super(props);
-        // 1. On définit l'état initial : on commence sur l'accueil
         this.state = {
             currentPage: 'accueil'
         };
     }
 
-    // Fonction pour changer de page
     changerPage = (nomPage, event) => {
-        // IMPORTANT : preventDefault empêche le lien de recharger la page
+        // Cette fonction empêche le rechargement de la page (comportement par défaut des liens)
         event.preventDefault(); 
         this.setState({ currentPage: nomPage });
     }
@@ -22,35 +22,35 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                {/* --- LE MENU DE NAVIGATION --- */}
+                {/* --- 1. La Navigation (Toujours visible) --- */}
                 <nav style={{ padding: "15px", backgroundColor: "#333", color: "white", marginBottom: "20px" }}>
-                    {/* Lien vers l'Accueil */}
                     <a 
                         href="/" 
-                        onClick={(e) => this.changerPage('accueil', e)}
+                        onClick={(e) => this.changerPage('accueil', e)} 
                         style={{ color: "white", marginRight: "20px", textDecoration: "none", fontWeight: "bold" }}
                     >
                         🏠 Accueil
                     </a>
-
-                    {/* Lien vers Contact */}
                     <a 
                         href="/contact" 
-                        onClick={(e) => this.changerPage('contact', e)}
+                        onClick={(e) => this.changerPage('contact', e)} 
                         style={{ color: "white", textDecoration: "none", fontWeight: "bold" }}
                     >
                         ✉️ Contact
                     </a>
                 </nav>
 
-                {/* --- L'AFFICHAGE CONDITIONNEL DES PAGES --- */}
+                {/* --- 2. Ton exercice sur l'âge (Toujours visible aussi) --- */}
+
+                {/* --- 3. L'AFFICHAGE DES PAGES (C'est ce qu'il manquait !) --- */}
+                <hr />
                 
-                {/* Si currentPage vaut 'accueil', on affiche <Accueil /> */}
+                {/* Si le state est 'accueil', on affiche le composant Accueil */}
                 {this.state.currentPage === 'accueil' && <Accueil />}
 
-                {/* Si currentPage vaut 'contact', on affiche <Contact /> */}
+                {/* Si le state est 'contact', on affiche le composant Contact */}
                 {this.state.currentPage === 'contact' && <Contact />}
-
+        
             </div>
         );
     }
