@@ -14,7 +14,7 @@ class Accueil extends Component {
                 <h2>Bienvenue sur l'Accueil</h2>
                 <p>Retrouvez ici tous mes exercices React.</p>
                 
-                {/* --- 1. L'âge --- */}
+                {/* L'âge*/}
                 <div className="majeur-container" style={{border: "1px solid red", padding: "10px", margin: "20px"}}>
                     <h3>L'age</h3>
                     <Majeur age={20} />
@@ -22,7 +22,7 @@ class Accueil extends Component {
 
                 <hr />
 
-                {/* --- 2. Le Compteur --- */}
+                {/*  Le Compteur */}
                 <div style={{ margin: "20px" }}>
                      <CompteurDePersonne />
                 </div>
