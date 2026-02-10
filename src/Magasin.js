@@ -2,7 +2,7 @@
 import React from 'react';
 
 function Magasin(props) {
-    // La logique : on vérifie si l'heure est comprise entre 9 et 18
+    // on vérifie si l'heure est comprise entre 9 et 18
     const isOuvert = props.hour >= 9 && props.hour <= 18;
 
     return (
