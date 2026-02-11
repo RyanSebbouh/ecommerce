@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Contact extends Component {
+class ContactData extends Component {
     render() {
         return (
             // On utilise la classe CSS définie plus haut
@@ -13,7 +13,7 @@ class Contact extends Component {
                         <label>Email : </label>
                         <input 
                             type="email" 
-                            placeholder="ryansebbouh2@gmail.com" 
+                            placeholder="Saisissez votre email" 
                             className="form-input"
                         />
                     </div>
@@ -22,7 +22,7 @@ class Contact extends Component {
                     <div className="form-group">
                         <label>Message : </label>
                         <textarea 
-                            placeholder="Yo c'est moi" 
+                            placeholder="Saisissez votre message" 
                             className="form-input"
                             rows="4" // Pour donner un peu de hauteur au textarea
                         ></textarea>

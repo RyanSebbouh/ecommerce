@@ -1,59 +1,74 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Accueil from './Accueil';
-import Contact from './Contact';
+import Contact from './ContactData';
+import Welcome from './Welcome';
 import Majeur from './Majeur';
+import Compteur_de_click from './Compteur_de_click';
 // import CompteurDePersonne from './CompteurDePersonne'; 
 
-class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentPage: 'accueil'
-        };
-    }
+function App() {
+    // Je déclare mon state avec le Hook useState
+    const [currentPage, setCurrentPage] = useState('accueil');
 
-    changerPage = (nomPage, event) => {
-        // Cette fonction empêche le rechargement de la page (comportement par défaut des liens)
-        event.preventDefault(); 
-        this.setState({ currentPage: nomPage });
-    }
+    // Fonction pour changer de page
+    const changerPage = (nomPage, event) => {
+        // J'empêche le rechargement de la page
+        event.preventDefault();
+        // Je mets à jour l'état (plus besoin de this.setState)
+        setCurrentPage(nomPage);
+    };
 
-    render() {
-        return (
-            <div className="App">
-                {/* --- 1. La Navigation (Toujours visible) --- */}
-                <nav style={{ padding: "15px", backgroundColor: "#333", color: "white", marginBottom: "20px" }}>
-                    <a 
-                        href="/" 
-                        onClick={(e) => this.changerPage('accueil', e)} 
-                        style={{ color: "white", marginRight: "20px", textDecoration: "none", fontWeight: "bold" }}
-                    >
-                        🏠 Accueil
-                    </a>
-                    <a 
-                        href="/contact" 
-                        onClick={(e) => this.changerPage('contact', e)} 
-                        style={{ color: "white", textDecoration: "none", fontWeight: "bold" }}
-                    >
-                        ✉️ Contact
-                    </a>
-                </nav>
+    return (
+        <div className="App">
+            {/* --- 1. La Navigation --- */}
+            <nav style={{ padding: "15px", backgroundColor: "#333", color: "white", marginBottom: "20px" }}>
+                <a 
+                    href="/" 
+                    onClick={(e) => changerPage('accueil', e)} 
+                    style={{ color: "white", marginRight: "20px", textDecoration: "none", fontWeight: "bold" }}
+                >
+                    🏠 Accueil
+                </a>
+                <a 
+                    href="/contactData" 
+                    onClick={(e) => changerPage('contact', e)} 
+                    style={{ color: "white", marginRight: "20px", textDecoration: "none", fontWeight: "bold" }}
+                >
+                    ✉️ Contact
+                </a>
+                <a 
+                    href="/Welcome" 
+                    onClick={(e) => changerPage('welcome', e)} 
+                    style={{ color: "white", marginRight: "20px", textDecoration: "none", fontWeight: "bold" }}
+                >
+                     Welcome 👋
+                </a>
+                <a 
+                    href="/Compteur_de_click" 
+                    onClick={(e) => changerPage('compteur', e)} 
+                    style={{ color: "white", textDecoration: "none", fontWeight: "bold" }}
+                >
+                     Compteur de click 📊
+                </a>
+            </nav>
 
-                {/* --- 2. Ton exercice sur l'âge (Toujours visible aussi) --- */}
+            {/* --- 2. exercice sur l'âge --- */}
+            {/* <Majeur />  */}
 
-                {/* --- 3. L'AFFICHAGE DES PAGES (C'est ce qu'il manquait !) --- */}
-                <hr />
-                
-                {/* Si le state est 'accueil', on affiche le composant Accueil */}
-                {this.state.currentPage === 'accueil' && <Accueil />}
+            {/* --- 3. L'AFFICHAGE DES PAGES --- */}
+            <hr />
+            
+            {/* J'utilise la variable currentPage directement (sans this.state) */}
+            {currentPage === 'accueil' && <Accueil />}
+            
+            {currentPage === 'contact' && <Contact />}
 
-                {/* Si le state est 'contact', on affiche le composant Contact */}
-                {this.state.currentPage === 'contact' && <Contact />}
-        
-            </div>
-        );
-    }
+            {currentPage === 'welcome' && <Welcome />}
+            
+            {currentPage === 'compteur' && <Compteur_de_click />}
+        </div>
+    );
 }
 
 export default App;

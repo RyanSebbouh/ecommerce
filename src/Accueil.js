@@ -6,7 +6,8 @@ import ProductList from './ProductList';
 import Welcome from './Welcome';
 import GuessNumber from './GuessNumber';
 import Majeur from './Majeur';
-import SimpleButton from './SimpleButton'; // <--- 1. J'AJOUTE L'IMPORT ICI
+import ClickMe from './ClickMe'; // <--- 1. J'AJOUTE L'IMPORT ICI
+import CompteurWithHook from './CompteurWithHook';
 
 class Accueil extends Component {
     render() {
@@ -25,25 +26,19 @@ class Accueil extends Component {
 
                 {/* Le Compteur */}
                 <div style={{ margin: "20px" }}>
-                     <CompteurDePersonne />
+                     <CompteurWithHook />
                 </div>
 
                 <hr />
 
-                {/* --- 2. J'AJOUTE LE NOUVEAU BOUTON ICI --- */}
-                <div style={{ margin: "20px" }}>
-                    <h3>Exercice : Événement (Alert)</h3>
-                    {/* Rappel : On utilise onClick sur le bouton, pas onSubmit */}
-                    <SimpleButton />
-                </div>
+ 
 
-                <hr />
+              
 
                 {/* Les autres exercices */}
                 <GuessNumber />
                 <hr />
-                <Welcome description="Super promo !" />
-                <ProductList />
+                
                 
             </div>
         );
