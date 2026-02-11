@@ -1,48 +1,120 @@
-import React from 'react';
+// AddProduct.js (VERSION CORRIGÉE)
+import React, { useState, useEffect } from 'react';
 
-function AddProduct() {
+function AddProduct({ onProductAdded, productToEdit, onCancelEdit }) {
+    const [nom, setNom] = useState('');
+    const [description, setDescription] = useState('');
+    const [prix, setPrix] = useState('');
+    const [image, setImage] = useState('');
 
-    // Exercice 2 : Gérer le changement du nom 
-    const handleNameChange = (event) => {
-        // Je récupère la valeur actuelle du champ input
-        console.log("Saisie en cours :", event.target.value);
-    }
+    // ✅ Remplir le formulaire quand on clique sur "Modifier"
+    useEffect(() => {
+        if (productToEdit) {
+            setNom(productToEdit.nom || '');
+            setDescription(productToEdit.description || '');
+            setPrix(productToEdit.prix || '');
+            setImage(productToEdit.image || '');
+        }
+    }, [productToEdit]);
 
-    // --- Exercice 3 : Gérer la soumission ---
-    const handleSubmit = (event) => {
-        // IMPORTANT : J'empêche le navigateur de recharger la page
-        event.preventDefault(); 
-        
-        console.log("Formulaire envoyé (sans rechargement) !");
-        alert("Produit ajouté !");
-    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const produit = { nom, description, prix: parseFloat(prix), image };
+
+        // ✅ Si on modifie un produit existant
+        if (productToEdit) {
+            fetch(`http://localhost:3001/products/${productToEdit.id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(produit)
+            })
+            .then(res => res.json())
+            .then(() => {
+                onProductAdded(); // Rafraîchir la liste
+                resetForm();
+                onCancelEdit(); // Sortir du mode édition
+            })
+            .catch(err => console.error('Erreur modification:', err));
+        } 
+        // ✅ Sinon, on ajoute un nouveau produit
+        else {
+            fetch('http://localhost:3001/products', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(produit)
+            })
+            .then(res => res.json())
+            .then(() => {
+                onProductAdded();
+                resetForm();
+            })
+            .catch(err => console.error('Erreur ajout:', err));
+        }
+    };
+
+    const resetForm = () => {
+        setNom('');
+        setDescription('');
+        setPrix('');
+        setImage('');
+    };
 
     return (
-        // J'attache onSubmit sur la balise <form>, pas sur le bouton !
-        <form onSubmit={handleSubmit} style={{ border: "2px solid #333", padding: "20px", margin: "20px" }}>
-            <h3>Ajouter un produit</h3>
-
-            {/* Input Nom : Je surveille chaque changement avec onChange */}
-            <label>Nom : </label>
-            <input 
-                type="text" 
-                placeholder="Nom du produit" 
-                onChange={handleNameChange} 
-            />
+        <div style={{ padding: '20px', border: '2px solid #3498db', borderRadius: '8px' }}>
+            <h2>{productToEdit ? '✏️ Modifier le produit' : '➕ Ajouter un produit'}</h2>
             
-            <br /><br />
+            <form onSubmit={handleSubmit}>
+                <input 
+                    type="text" 
+                    placeholder="Nom du produit" 
+                    value={nom} 
+                    onChange={(e) => setNom(e.target.value)} 
+                    required 
+                    style={{ display: 'block', margin: '10px 0', padding: '8px', width: '300px' }}
+                />
+                <input 
+                    type="text" 
+                    placeholder="Description" 
+                    value={description} 
+                    onChange={(e) => setDescription(e.target.value)} 
+                    style={{ display: 'block', margin: '10px 0', padding: '8px', width: '300px' }}
+                />
+                <input 
+                    type="number" 
+                    step="0.01"
+                    placeholder="Prix" 
+                    value={prix} 
+                    onChange={(e) => setPrix(e.target.value)} 
+                    required 
+                    style={{ display: 'block', margin: '10px 0', padding: '8px', width: '300px' }}
+                />
+                <input 
+                    type="url" 
+                    placeholder="URL de l'image" 
+                    value={image} 
+                    onChange={(e) => setImage(e.target.value)} 
+                    style={{ display: 'block', margin: '10px 0', padding: '8px', width: '300px' }}
+                />
+                
+                <button type="submit" style={{ padding: '10px 20px', backgroundColor: '#2ecc71', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer', marginRight: '10px' }}>
+                    {productToEdit ? 'Mettre à jour' : 'Ajouter'}
+                </button>
 
-            {/* Input Description */}
-            <label>Description : </label>
-            <input 
-                type="text" 
-                placeholder="Description du produit" 
-            />
-            
-            <br /><br />
-
-            <button type="submit">Valider</button>
-        </form>
+                {productToEdit && (
+                    <button 
+                        type="button"
+                        onClick={() => {
+                            resetForm();
+                            onCancelEdit();
+                        }}
+                        style={{ padding: '10px 20px', backgroundColor: '#95a5a6', color: 'white', border: 'none', borderRadius: '4px', cursor: 'pointer' }}
+                    >
+                        Annuler
+                    </button>
+                )}
+            </form>
+        </div>
     );
 }
 

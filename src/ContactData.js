@@ -35,4 +35,4 @@ class ContactData extends Component {
     }
 }
 
-export default Contact;
+export default ContactData;

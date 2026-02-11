@@ -236,41 +236,53 @@ h1 {
 }
 /* --- Styles pour le Magasin --- */
 
+/* Style de la carte globale */
 .magasin-card {
-  border: 1px solid #333;
-  padding: 10px;
-  margin: 10px;
-  width: 200px;
-  text-align: center;
-  background-color: #fff;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  display: inline-block; /* Pour qu'ils s'alignent côte à côte si besoin */
+  padding: 20px;
+  margin: 20px auto;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  background-color: white;
 }
 
-/* Style de base pour le texte */
+/* Style de base du statut */
 .statut-magasin {
   font-weight: bold;
-  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
 }
 
-/* Les couleurs dynamiques */
-.ouvert {
-  color: green;
+/* --- C'est ici que la magie opère --- */
+
+/* Style quand c'est OUVERT (Vert) */
+.statut-magasin.ouvert {
+  background-color: #d4edda; /* Vert clair fond */
+  color: #155724;            /* Vert foncé texte */
+  border: 1px solid #c3e6cb;
 }
 
-.ferme {
-  color: red;
+/* Style quand c'est FERMÉ (Rouge) */
+.statut-magasin.ferme {
+  background-color: #f8d7da; /* Rouge clair fond */
+  color: #721c24;            /* Rouge foncé texte */
+  border: 1px solid #f5c6cb;
 }
+
+
 /* --- Styles pour le composant Majeur --- */
 
 .resultat-majeur {
-  color: green;
-  font-weight: bold;
-  padding: 5px;
+    color: green;
+    font-weight: bold;
+    margin-top: 15px;
 }
 
 .resultat-mineur {
-  color: orange;
-  font-weight: bold;
-  padding: 5px;
+    color: orange;
+    font-weight: bold;
+    margin-top: 15px;
 }
