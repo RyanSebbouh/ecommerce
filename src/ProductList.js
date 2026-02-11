@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'; // 1. On importe les outils
 import ProductPreview from './ProductPreview';
 
 function ProductList() {
-    // 2. C'est CETTE ligne qui manquait probablement :
+
     // On déclare la variable 'produits' et la fonction pour la modifier 'setProduits'
     const [produits, setProduits] = useState([]); 
 
